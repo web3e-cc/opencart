@@ -1,0 +1,5 @@
+/vendor/
+composer.lock
+*.zip
+*.ocmod.zip
+.DS_Store

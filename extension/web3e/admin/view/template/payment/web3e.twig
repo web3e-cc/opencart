@@ -1,0 +1,70 @@
+{{ header }}{{ column_left }}
+<div id="content">
+  <div class="page-header">
+    <div class="container-fluid">
+      <div class="float-end">
+        <button type="submit" form="form-payment" data-bs-toggle="tooltip" title="{{ button_save }}" class="btn btn-primary"><i class="fa-solid fa-floppy-disk"></i></button>
+        <a href="{{ back }}" data-bs-toggle="tooltip" title="{{ button_back }}" class="btn btn-light"><i class="fa-solid fa-reply"></i></a>
+      </div>
+      <h1>{{ heading_title }}</h1>
+    </div>
+  </div>
+  <div class="container-fluid">
+    <div id="alert" class="position-fixed top-0 end-0 p-3" style="z-index: 5"></div>
+    <div class="card">
+      <div class="card-header"><i class="fa-solid fa-pencil"></i> {{ text_edit }}</div>
+      <div class="card-body">
+        <p class="text-muted">{{ text_web3e }}</p>
+        <form id="form-payment" action="{{ save }}" method="post" data-oc-toggle="ajax">
+          <div class="row mb-3">
+            <label class="col-sm-2 col-form-label">{{ entry_callback }}</label>
+            <div class="col-sm-10">
+              <input type="text" value="{{ callback_url }}" readonly class="form-control"/>
+              <div class="form-text">{{ help_callback }}</div>
+            </div>
+          </div>
+          <div class="row mb-3">
+            <label for="input-api-base" class="col-sm-2 col-form-label">{{ entry_api_base }}</label>
+            <div class="col-sm-10"><input type="text" name="payment_web3e_api_base" value="{{ payment_web3e_api_base }}" id="input-api-base" class="form-control"/></div>
+          </div>
+          <div class="row mb-3">
+            <label for="input-public-id" class="col-sm-2 col-form-label">{{ entry_public_id }}</label>
+            <div class="col-sm-10"><input type="text" name="payment_web3e_public_id" value="{{ payment_web3e_public_id }}" id="input-public-id" class="form-control"/></div>
+          </div>
+          <div class="row mb-3">
+            <label for="input-api-secret" class="col-sm-2 col-form-label">{{ entry_api_secret }}</label>
+            <div class="col-sm-10"><input type="password" name="payment_web3e_api_secret" value="{{ payment_web3e_api_secret }}" id="input-api-secret" class="form-control"/></div>
+          </div>
+          <div class="row mb-3">
+            <label for="input-webhook-secret" class="col-sm-2 col-form-label">{{ entry_webhook_secret }}</label>
+            <div class="col-sm-10"><input type="password" name="payment_web3e_webhook_secret" value="{{ payment_web3e_webhook_secret }}" id="input-webhook-secret" class="form-control"/></div>
+          </div>
+          <div class="row mb-3">
+            <label for="input-order-status" class="col-sm-2 col-form-label">{{ entry_order_status }}</label>
+            <div class="col-sm-10">
+              <select name="payment_web3e_order_status_id" id="input-order-status" class="form-select">
+                {% for order_status in order_statuses %}
+                  {% if order_status.order_status_id == payment_web3e_order_status_id %}
+                    <option value="{{ order_status.order_status_id }}" selected>{{ order_status.name }}</option>
+                  {% else %}
+                    <option value="{{ order_status.order_status_id }}">{{ order_status.name }}</option>
+                  {% endif %}
+                {% endfor %}
+              </select>
+            </div>
+          </div>
+          <div class="row mb-3">
+            <label for="input-status" class="col-sm-2 col-form-label">{{ entry_status }}</label>
+            <div class="col-sm-10">
+              <select name="payment_web3e_status" id="input-status" class="form-select">
+                <option value="1"{% if payment_web3e_status %} selected{% endif %}>{{ text_enabled }}</option>
+                <option value="0"{% if not payment_web3e_status %} selected{% endif %}>{{ text_disabled }}</option>
+              </select>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+{{ footer }}

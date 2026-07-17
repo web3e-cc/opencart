@@ -1,0 +1,13 @@
+{
+    "name": "web3e/opencart-crypto-gateway",
+    "description": "Web3e crypto payment extension for OpenCart.",
+    "type": "project",
+    "license": "MIT",
+    "require": {
+        "php": ">=7.4",
+        "web3e/crypto-gateway-php": "^0.1"
+    },
+    "config": {
+        "sort-packages": true
+    }
+}

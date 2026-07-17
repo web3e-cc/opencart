@@ -1,0 +1,20 @@
+<div class="text-end">
+  <button type="button" id="button-confirm" class="btn btn-primary">{{ button_confirm }}</button>
+</div>
+<script type="text/javascript">
+document.querySelector('#button-confirm').addEventListener('click', function () {
+    const btn = this;
+    btn.disabled = true;
+    fetch('{{ confirm }}', { headers: { 'X-Requested-With': 'XMLHttpRequest' } })
+        .then(response => response.json())
+        .then(json => {
+            if (json.redirect) {
+                location = json.redirect;
+            } else {
+                alert(json.error || 'Error');
+                btn.disabled = false;
+            }
+        })
+        .catch(() => { btn.disabled = false; });
+});
+</script>
