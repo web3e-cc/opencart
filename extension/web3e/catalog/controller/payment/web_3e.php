@@ -18,10 +18,10 @@ class Web3e extends \Opencart\System\Engine\Controller
 {
     private function sdk(): void
     {
-        require_once DIR_SYSTEM . 'library/web3e/lib/Web3e/Gateway/GatewayException.php';
-        require_once DIR_SYSTEM . 'library/web3e/lib/Web3e/Gateway/Signer.php';
-        require_once DIR_SYSTEM . 'library/web3e/lib/Web3e/Gateway/Client.php';
-        require_once DIR_SYSTEM . 'library/web3e/lib/Web3e/Gateway/WebhookVerifier.php';
+        require_once DIR_EXTENSION . 'web3e/system/library/web3e/lib/Web3e/Gateway/GatewayException.php';
+        require_once DIR_EXTENSION . 'web3e/system/library/web3e/lib/Web3e/Gateway/Signer.php';
+        require_once DIR_EXTENSION . 'web3e/system/library/web3e/lib/Web3e/Gateway/Client.php';
+        require_once DIR_EXTENSION . 'web3e/system/library/web3e/lib/Web3e/Gateway/WebhookVerifier.php';
     }
 
     public function index(): string
