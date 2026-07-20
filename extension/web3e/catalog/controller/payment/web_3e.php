@@ -99,8 +99,8 @@ class Web3e extends \Opencart\System\Engine\Controller
         $this->sdk();
 
         $raw = file_get_contents('php://input');
-        $webhook_id = $_SERVER['HTTP_WEBHOOK_ID'] ?? '';
-        $signature = $_SERVER['HTTP_WEBHOOK_SIGNATURE'] ?? '';
+        $webhook_id = $_SERVER['HTTP_SM_WEBHOOK_ID'] ?? '';
+        $signature = $_SERVER['HTTP_SM_WEBHOOK_SIGNATURE'] ?? '';
 
         $verifier = new WebhookVerifier((string) $this->config->get('payment_web3e_webhook_secret'));
         if (!$verifier->verify((string) $raw, $webhook_id, $signature)) {
