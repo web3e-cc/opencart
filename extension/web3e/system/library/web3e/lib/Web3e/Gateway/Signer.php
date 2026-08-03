@@ -14,8 +14,8 @@ namespace Web3e\Gateway;
  *   SM-Signature = "v1=" . hex( HMAC-SHA256(secret, canonical) )
  *
  * Headers the server expects (universal SM- prefix): SM-Api-Key (public id), SM-Timestamp (unix seconds),
- * SM-Nonce (>= 16 chars, single-use), SM-Signature ("v1=<hex>"). (Legacy X-* still works server-side during
- * the migration window; SM- is canonical.)
+ * SM-Nonce (>= 16 chars, single-use), SM-Signature ("v1=<hex>"), plus SM-Idempotency-Key on every POST.
+ * There is no legacy X-* fallback any more — the server accepts SM- only.
  */
 final class Signer
 {

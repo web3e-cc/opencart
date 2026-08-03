@@ -8,8 +8,8 @@ namespace Web3e\Gateway;
  * Verify an inbound Web3e webhook (IPN) signature.
  *
  * The server delivers (backend gateway-ipn.service.ts + gateway-webhook-sign.ts):
- *   Webhook-Id:        <event id>
- *   Webhook-Signature: v1,t=<unix_s>,s1=<hex>[,s1=<hex_prev>]
+ *   SM-Webhook-Id:        <event id>            ($_SERVER['HTTP_SM_WEBHOOK_ID'])
+ *   SM-Webhook-Signature: v1,t=<unix_s>,s1=<hex>[,s1=<hex_prev>]
  *
  * Canonical signing string:  "v1.{webhookId}.{timestamp}.{rawBody}"
  * Accept when |now - t| <= tolerance AND ANY s1 matches (constant-time). Multiple s1 values occur
