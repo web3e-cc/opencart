@@ -14,6 +14,20 @@ class Web3e extends \Opencart\System\Engine\Controller
     {
         $this->load->language($this->route);
 
+        // The OpenCart 3.x and 4.x packages are separate downloads with incompatible layouts. If the wrong
+        // one somehow loads, say so plainly instead of leaving the merchant with a broken settings screen.
+        if (defined('VERSION') && version_compare((string) VERSION, '4.0', '<')) {
+            $this->response->setOutput(
+                $this->load->controller('common/header')
+                . '<div id="content"><div class="container-fluid"><div class="alert alert-danger">'
+                . sprintf($this->language->get('error_engine'), (string) VERSION)
+                . '</div></div></div>'
+                . $this->load->controller('common/footer'),
+            );
+
+            return;
+        }
+
         $this->document->setTitle($this->language->get('heading_title'));
 
         $data['save'] = $this->url->link($this->route . '.save', 'user_token=' . $this->session->data['user_token']);

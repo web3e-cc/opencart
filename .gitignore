@@ -1,5 +1,6 @@
 /vendor/
 composer.lock
+dist/
 *.zip
 *.ocmod.zip
 .DS_Store

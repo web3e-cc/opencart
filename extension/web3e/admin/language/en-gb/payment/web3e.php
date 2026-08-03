@@ -22,3 +22,4 @@ $_['help_callback']            = 'Set this URL as the callback/IPN endpoint in y
 
 // Error
 $_['error_permission']         = 'Warning: You do not have permission to modify Web3e payment settings!';
+$_['error_engine']             = 'Wrong package: this is Web3e Crypto Payments for OpenCart 4.x, but this store runs OpenCart %s. Install the OpenCart 3.x package instead — https://github.com/web3e-cc/opencart3';
