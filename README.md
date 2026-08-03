@@ -5,7 +5,7 @@ Built on [`web3e/crypto-gateway-php`](https://github.com/web3e-cc/crypto-gateway
 
 ## How it works
 
-1. On checkout the storefront controller calls `POST /invoices` and returns the `checkout_url`; the
+1. On checkout the storefront controller calls `POST /invoices` and returns the `checkoutUrl`; the
    buyer is redirected there (a stable idempotency key keeps a retry from minting a second invoice).
 2. When the payment is credited, Web3e POSTs a **signed** IPN to the `callback` route.
 3. The callback verifies the `Webhook-Signature`, then promotes the order to the configured paid status
